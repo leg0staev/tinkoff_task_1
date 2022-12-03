@@ -21,12 +21,27 @@
 Во втором примере Костя укладывается в тарифный план, поэтому платит только за него.
 */
 
-string[] sourceArray = GetSourceArray("Данные для расчета тарифа через пробел: ");
+string[] sourceArray = GetSourceArray("Данные для расчета тарифа Кости через пробел: ");
 
-//sourceArray[0] - A - стоимость тарифа Кости
-//sourceArray[1] - B - размер тарифа Кости
-//sourceArray[2] - C - стоимость каждого лишнего мегабайта
-//sourceArray[2] - D - размер интернет-трафика Кости в следующем месяце
+//sourceArray[0] - A - стоимость тарифа Кости, руб
+//sourceArray[1] - B - размер тарифа Кости, мб
+//sourceArray[2] - C - стоимость каждого лишнего мегабайта, руб
+//sourceArray[3] - D - размер интернет-трафика Кости в следующем месяце
+
+int ActualCost(string[] array)
+{
+    int tariffCost = Int32.Parse(array[0]);
+    int tariffTrafic = Int32.Parse(array[1]);
+    int exceedingCost = Int32.Parse(array[2]);
+    int actualTrafic = Int32.Parse(array[3]);
+
+    int cost = tariffCost;
+    if (actualTrafic > tariffTrafic)
+    {
+        cost = tariffCost + (actualTrafic - tariffTrafic) * exceedingCost;
+    }
+    return cost;
+}
 
 
 string[] GetSourceArray(string systemMessage){
