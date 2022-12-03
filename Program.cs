@@ -22,6 +22,7 @@
 */
 
 string[] sourceArray = GetSourceArray("Данные для расчета тарифа Кости через пробел: ");
+Console.Write(ActualCost(sourceArray));
 
 //sourceArray[0] - A - стоимость тарифа Кости, руб
 //sourceArray[1] - B - размер тарифа Кости, мб
